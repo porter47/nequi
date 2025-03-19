@@ -1,0 +1,7 @@
+spring:
+  webflux:
+    base-path: /nequi
+    
+  config:
+    import:
+      aws-parameterstore:
