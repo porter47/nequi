@@ -1,0 +1,102 @@
+##########################
+## Kate
+##########################
+*.kate-swp
+
+##########################
+## Node
+##########################
+node_modules/
+
+##########################
+## Java
+##########################
+*.class
+.mtj.tmp/
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+##########################
+## VS Code
+##########################
+.history/
+.factorypath
+.vscode/
+*.vsix
+*.code-workspace
+
+##########################
+## Maven
+##########################
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+##########################
+## IntelliJ
+##########################
+*.iml
+.idea/
+*.ipr
+*.iws
+.idea_modules/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+##########################
+## Eclipse
+##########################
+.metadata
+.classpath
+.project
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+
+##########################
+## NetBeans
+##########################
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+##########################
+## OS X
+##########################
+.DS_Store
+
+##########################
+## Maven Wrapper
+##########################
+mvnw*
+.mvn
+
+##########################
+## Misc
+##########################
+.stack
+deployments/
+
+
