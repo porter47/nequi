@@ -12,13 +12,14 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 
 @Module
 public class DynamoClientConfig {
-	
+
+	private static final String AWS_DEFAULT_REGION = "AWS_DEFAULT_REGION";
+
 	public static final String TABLE_NAME = "FRANCHISES";
 
 	@Bean
 	public DynamoDbEnhancedClient dynamoDbEnhancedAsyncClient() {
-		// TODO inject the region
-		var client = DynamoDbClient.builder().region(Region.US_EAST_1)
+		var client = DynamoDbClient.builder().region(Region.of(System.getenv(AWS_DEFAULT_REGION)))
 				.credentialsProvider(SdkSystemSetting.AWS_CONTAINER_CREDENTIALS_FULL_URI.getStringValue().isPresent()
 						? ContainerCredentialsProvider.builder().build()
 						: EnvironmentVariableCredentialsProvider.create())

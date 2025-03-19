@@ -3,7 +3,6 @@ package co.com.nequi.franchises.adapter.out.persistence.dynamodb.product;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import co.com.nequi.franchises.adapter.out.persistence.dynamodb.DynamoClientConfig;
 import co.com.nequi.franchises.adapter.out.persistence.dynamodb.DynamoSeparatorUtil;
@@ -115,7 +114,7 @@ class ProductDynamoAdapter implements ProductPersistencePort {
 
 			response.forEach(page -> {
 				var items = page.items();
-				var productList = items.stream().map(this::entityToDomain).collect(Collectors.toList());
+				var productList = items.stream().map(this::entityToDomain).toList();
 				products.addAll(productList);
 			});
 

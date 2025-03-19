@@ -24,7 +24,7 @@ class ProductService implements ProductUseCase {
 
 	@Override
 	public Mono<Product> save(Product product) {
-		// TODO validate the franchise name does not exists
+		// TODO validate the product name does not exists
 		product.validate();
 		product.nameToUpper();
 
@@ -56,23 +56,21 @@ class ProductService implements ProductUseCase {
 	public Mono<List<Product>> findMaxStock(String franchiseId) {
 		return productPersistencePort.findMaxStock(franchiseId).map(items -> {
 
-			var branches = items.stream().filter(item -> item.getStock() == null).collect(Collectors.toList());
+			var branches = items.stream().filter(item -> item.getStock() == null).toList();
 
 			items.removeIf(item -> item.getStock() == null);
 
-			items.forEach(p -> {
-				branches.forEach(b -> {
-					if (p.getId().contains(b.getId())) {
-						p.setBranchName(b.getName());
-						return;
-					}
-				});
-			});
+			items.forEach(p -> branches.forEach(b -> {
+				if (p.getId().contains(b.getId())) {
+					p.setBranchName(b.getName());
+					return;
+				}
+			}));
 
 			return items.stream()
 					.collect(Collectors.groupingBy(Product::getBranchName,
 							Collectors.maxBy(Comparator.comparing(Product::getStock))))
-					.values().stream().flatMap(Optional::stream).collect(Collectors.toList());
+					.values().stream().flatMap(Optional::stream).toList();
 		});
 	}
 }
